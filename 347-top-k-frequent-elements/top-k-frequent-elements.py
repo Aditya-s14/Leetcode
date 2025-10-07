@@ -9,8 +9,11 @@ class Solution:
         # lemme create a bucket for each frequency 
         # 0  1  2  3  4  5  6. <--- frequency
         #[] [] [] [] [] []  [] <---- bucket
-        nlen = len(nums)
-        buckets = [[] for _ in range(nlen+1)]
+        #nlen = len(nums) <-- instead of this find max frequency from hashmap and create buckets
+        # Find the maximum frequency
+        max_freq = max(hashmap.values())
+        #buckets = [[] for _ in range(nlen+1)]
+        buckets = [[] for _ in range(max_freq + 1)]
         
 
         # now we have to store element inside the [] corresponding to its frequency
