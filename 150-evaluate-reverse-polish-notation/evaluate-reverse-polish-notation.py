@@ -5,15 +5,15 @@ class Solution:
             if c == '+':
                 stack.append(stack.pop() + stack.pop())
             elif c == '-':
+                b= stack.pop()
                 a = stack.pop()
-                b = stack.pop()
-                stack.append(int(b-a))
+                stack.append(int(a-b))
             elif c == '*':
                 stack.append(stack.pop() * stack.pop())
             elif c == '/':
-                a = stack.pop()
                 b = stack.pop()
-                stack.append(int(b/a))
+                a= stack.pop()
+                stack.append(int(a/b))
             else:
                 stack.append(int(c))
             
