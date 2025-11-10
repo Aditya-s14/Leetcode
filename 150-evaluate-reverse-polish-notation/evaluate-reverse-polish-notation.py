@@ -7,7 +7,7 @@ class Solution:
             elif c == '-':
                 b= stack.pop()
                 a = stack.pop()
-                stack.append(int(a-b))
+                stack.append(a-b)
             elif c == '*':
                 stack.append(stack.pop() * stack.pop())
             elif c == '/':
