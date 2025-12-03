@@ -1,0 +1,39 @@
+class Solution:
+    def union(self, nums1, nums2):
+        i, j = 0, 0
+        n1, n2 = len(nums1), len(nums2)
+        result = []
+
+        while i < n1 and j < n2:
+            # Skip duplicates within the same array
+            if i > 0 and nums1[i] == nums1[i-1]:
+                i += 1
+                continue
+            if j > 0 and nums2[j] == nums2[j-1]:
+                j += 1
+                continue
+
+            if nums1[i] < nums2[j]:
+                result.append(nums1[i])
+                i += 1
+            elif nums2[j] < nums1[i]:
+                result.append(nums2[j])
+                j += 1
+            else:  # equal
+                result.append(nums1[i])
+                i += 1
+                j += 1
+
+        # Add leftover from nums1
+        while i < n1:
+            if i == 0 or nums1[i] != nums1[i-1]:
+                result.append(nums1[i])
+            i += 1
+
+        # Add leftover from nums2
+        while j < n2:
+            if j == 0 or nums2[j] != nums2[j-1]:
+                result.append(nums2[j])
+            j += 1
+
+        return result
