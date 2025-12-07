@@ -15,4 +15,4 @@ class Solution:
                 perm_copy.insert(i,nums[0])
                 res.append(perm_copy)
         return res
-        
+                                                
