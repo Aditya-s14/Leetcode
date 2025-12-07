@@ -12,11 +12,6 @@ class Solution:
         return res
         
         
-        
-        
-        
-        
-        
         """hashmap = {}
 
         for i in range(len(nums)):
