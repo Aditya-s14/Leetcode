@@ -15,10 +15,10 @@ class Solution:
             elif target < matrix[row_mid][0]:
                 bot = row_mid-1
             
-            else:
+            else: # we break out of the while when we found the row containing the row containing target
                 break
         
-        if not (top<=bot):
+        if not (top<=bot):  # here we check did we break out because we found the row or due to condition fail in the while loop
             return False
         
         l=0
