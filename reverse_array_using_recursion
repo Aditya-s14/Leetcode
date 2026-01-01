@@ -1,0 +1,14 @@
+def reverse_list(arr):
+    if len(arr) == 0:
+        return []
+    return [arr[-1]] + reverse_list(arr[:-1])
+
+
+
+reverse([1,2,3,4,5])
+→ [5] + reverse([1,2,3,4])
+→ [5] + [4] + reverse([1,2,3])
+→ [5,4] + [3] + reverse([1,2])
+→ [5,4,3] + [2] + reverse([1])
+→ [5,4,3,2] + [1]
+
