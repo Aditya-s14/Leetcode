@@ -1,0 +1,22 @@
+def insertbelow(stack,temp):
+    if not stack:
+        stack.append(temp)
+        return
+    num = stack.pop()
+    insertbelow(stack,temp)
+    stack.append(num)
+
+
+def reverse(stack): 
+    #only if stack is not empty
+    if stack:
+        temp = stack.pop()
+        reverse(stack)
+        insertbelow(stack,temp)
+
+
+if __name__=="__main__":
+    stack = [1,2,3,4]
+    reverse(stack)
+    print(stack)
+
