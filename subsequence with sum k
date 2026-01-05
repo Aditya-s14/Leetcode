@@ -1,0 +1,53 @@
+def count_subsequences(nums, k):
+    def dfs(i, curr_sum):
+        # BASE CASE: all elements considered
+        if i == len(nums):
+            return 1 if curr_sum == k else 0
+
+        # INCLUDE nums[i]
+        include = dfs(i + 1, curr_sum + nums[i])
+
+        # EXCLUDE nums[i]
+        exclude = dfs(i + 1, curr_sum)
+
+        return include + exclude
+
+    return dfs(0, 0)
+
+
+
+
+dfs(0,0)
+├── include 1 → dfs(1,1)
+│   ├── include 2 → dfs(2,3)
+│   │   ├── include 1 → dfs(3,4) → 0
+│   │   └── exclude 1 → dfs(3,3) → 0
+│   └── exclude 2 → dfs(2,1)
+│       ├── include 1 → dfs(3,2) → 1 ✅
+│       └── exclude 1 → dfs(3,1) → 0
+└── exclude 1 → dfs(1,0)
+    ├── include 2 → dfs(2,2)
+    │   ├── include 1 → dfs(3,3) → 0
+    │   └── exclude 1 → dfs(3,2) → 1 ✅
+    └── exclude 2 → dfs(2,0)
+        ├── include 1 → dfs(3,1) → 0
+        └── exclude 1 → dfs(3,0) → 0
+
+
+Now ADD the leaf returns
+Only these return 1:
+[1,1],[2]
+
+Everything else returns 0
+So total:
+1 + 1 = 2
+👉 Final answer = 2
+
+🔥 VERY IMPORTANT REALIZATION
+This line 👇
+return 1 if curr_sum == k else 0
+does NOT mean:
+“Return the final answer”
+It means:
+“Does THIS PARTICULAR subsequence count as 1 or 0?”
+The real counting happens when recursion unwinds and adds everything up.
