@@ -1,0 +1,19 @@
+def generate(n,curr,res):
+    # base case: if length of curr string is n:
+    if len(curr) == n:
+        res.append(curr)
+        return
+    
+    #always add "0"
+    generate(n,curr+"0",res)
+
+    #add "1" if the curr is empty or the previous string in curr is not 1
+    if not curr or curr[-1]!='1':
+        generate(n,curr+"1",res)
+
+if __name__ == "__main__":
+    res = []
+    curr=""
+    n = 3
+    generate(n,curr,res)
+    print(res)
