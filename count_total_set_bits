@@ -1,0 +1,14 @@
+def count_set_bits(n:int)->int:
+    binary = bin(n)[2:]
+    binary_list = list(map(int,str(binary)))
+    count = 0
+
+    for bit in binary_list:
+        if bit == 1:
+            count+=1
+    
+    return count
+
+if __name__ == "__main__":
+    n = 15
+    print(count_set_bits(n))
