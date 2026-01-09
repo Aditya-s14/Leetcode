@@ -1,0 +1,12 @@
+num = 1634
+copy = num
+sum = 0
+length = len(str(num))
+while num!=0:
+    rem = num%10
+    num = num//10
+    sum = sum+(rem**length)
+if sum == copy:
+    print('armstrong')
+else:
+    print('not armstrong')
