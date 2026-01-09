@@ -1,0 +1,9 @@
+n = 36
+limit = int(n ** 0.5)
+
+for i in range(1, limit + 1):       #range does not take float values as parameters
+    if n % i == 0:
+        print(i)
+        q = n // i
+        if q != i:      # avoid duplicate for perfect square
+            print(q)
