@@ -1,0 +1,63 @@
+class QueueArray:
+
+    def __init__(self, size=1000):
+        self.arrayQueue = [0] * size
+        self.start = 0
+        self.end = -1
+        self.capacity = size
+        self.count = 0
+
+    # Check if queue is empty
+    def isEmpty(self):
+        return self.count == 0
+
+    # Add element to queue
+    def enqueue(self, x):
+        if self.count == self.capacity:
+            print('queue overflow')
+            return
+
+        self.end += 1
+        self.arrayQueue[self.end] = x
+        self.count += 1
+
+    # Remove element from queue
+    def dequeue(self):
+        if self.isEmpty():
+            print('queue underflow')
+            return None
+
+        front_element = self.arrayQueue[self.start]
+        self.start += 1
+        self.count -= 1
+        return front_element
+
+    # View front element
+    def peek(self):
+        if self.isEmpty():
+            print('queue is empty')
+            return None
+
+        return self.arrayQueue[self.start]
+
+
+# Main execution (LeetCode-style driver)
+if __name__ == '__main__':
+
+    queue = QueueArray()
+
+    commands = ["ArrayQueue", "enqueue", "enqueue", "peek", "dequeue", "isEmpty"]
+    inputs = [[], [5], [10], [], [], []]
+
+    for i in range(len(commands)):
+        if commands[i] == 'ArrayQueue':
+            print('null', end=' ')
+        elif commands[i] == 'enqueue':
+            queue.enqueue(inputs[i][0])
+            print('null', end=' ')
+        elif commands[i] == 'dequeue':
+            print(queue.dequeue(), end=' ')
+        elif commands[i] == 'peek':
+            print(queue.peek(), end=' ')
+        elif commands[i] == 'isEmpty':
+            print('true' if queue.isEmpty() else 'false', end=' ')
