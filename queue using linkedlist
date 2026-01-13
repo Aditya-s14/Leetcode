@@ -1,0 +1,34 @@
+class Node():
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+
+class Queue():
+    def __init__(self):
+        self.start = None  # front
+        self.end = None    # rear
+
+    def isEmpty(self):
+        return self.start is None
+
+    def push(self, x):   # enqueue
+        newNode = Node(x)
+
+        if self.isEmpty():
+            self.start = self.end = newNode
+        else:
+            self.end.next = newNode
+            self.end = newNode
+
+    def pop(self):       # dequeue
+        if self.isEmpty():
+            print("Queue Underflow")
+            return None
+
+        temp = self.start.data
+        self.start = self.start.next
+
+        if self.start is None:   # queue became empty
+            self.end = None
+
+        return temp
