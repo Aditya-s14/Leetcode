@@ -1,0 +1,51 @@
+class ArrayStack:
+
+    def __init__(self, size=1000):
+        self.stackarray = [0] * size
+        self.capacity = size
+        self.top_index = -1 
+
+    def isEmpty(self):
+        return self.top_index == -1
+
+    def push(self, x):
+        if self.top_index >= self.capacity - 1:
+            print('stack overflow')
+            return
+
+        self.top_index += 1
+        self.stackarray[self.top_index] = x
+
+    def pop(self):
+        if self.isEmpty():
+            print('stack underflow')
+            return None
+
+        top_element = self.stackarray[self.top_index]
+        self.top_index -= 1
+        return top_element
+
+    def top(self):
+        if self.isEmpty():
+            print('stack is empty')
+            return None
+
+        return self.stackarray[self.top_index]
+
+if __name__ =='__main__':
+    stack = ArrayStack()
+    commands = ["ArrayStack", "push", "push", "top", "pop", "isEmpty"]
+    inputs = [[], [5], [10], [], [], []]
+
+    for i in range(len(commands)):
+        if commands[i] == "ArrayStack":
+            print("null", end=" ")
+        elif commands[i] == "push":
+            stack.push(inputs[i][0])
+            print("null", end=" ")
+        elif commands[i] == "pop":
+            print(stack.pop(), end=" ")
+        elif commands[i] == "top":
+            print(stack.top(), end=" ")
+        elif commands[i] == "isEmpty":
+            print("true" if stack.isEmpty() else "false", end=" ")
