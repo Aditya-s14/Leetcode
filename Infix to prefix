@@ -1,0 +1,70 @@
+def priority(c):
+    if c == '^':
+        return 3
+    if c == '*' or c == '/':
+        return 2
+    if c == '+' or c == '-':
+        return 1
+    else:
+        return 0
+
+
+def correct(exp):
+    res = ""
+    i = 0
+    while i < len(exp):
+        if exp[i] == '(':
+            res += ')'
+        elif exp[i] == ')':
+            res += '('
+        else:
+            res += exp[i]
+        i += 1
+    return res
+
+
+def reverse(exp):
+    exp = list(exp)
+    left = 0
+    right = len(exp) - 1
+    while left < right:
+        exp[left], exp[right] = exp[right], exp[left]
+        left += 1
+        right -= 1
+    exp = "".join(exp)
+    return correct(exp)
+
+
+def InfixToPrefix(exp):
+    inp = reverse(exp)
+    stack = []
+    res = ""
+
+    for char in inp:
+
+        if char == ' ':
+            continue
+
+        if char.isalpha():                 # operand
+            res += char
+
+        elif char == '(':
+            stack.append(char)
+
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                res += stack.pop()
+            stack.pop()                    # remove '('
+
+        else:                              # operator
+            while stack and priority(stack[-1]) > priority(char):
+                res += stack.pop()
+            stack.append(char)
+
+    while stack:
+        res += stack.pop()
+
+    return reverse(res)
+
+
+print(InfixToPrefix("x + y * z / w + u"))
