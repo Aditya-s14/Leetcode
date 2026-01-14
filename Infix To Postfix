@@ -1,0 +1,54 @@
+def priority(c):
+    if c == '^':
+        return 3
+    elif c == '*' or c == '/':
+        return 2
+    elif c == '+' or c == '-':
+        return 1
+    else:
+        return 0
+
+
+def InfixToPostfix(exp: str):
+    res = ""
+    stack = []
+
+    for char in exp:
+        # Ignore spaces
+        if char == ' ':
+            continue
+
+        # Operand
+        if char.isalpha():
+            res += char
+
+        # Opening bracket
+        elif char == '(':
+            stack.append(char)
+
+        # Closing bracket
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                res += stack.pop()
+            stack.pop()  # remove '('
+
+        # Operator
+        else:
+            while (stack and
+                   priority(char) <= priority(stack[-1]) and
+                   stack[-1] != '('):
+                res += stack.pop()
+            stack.append(char)
+
+    # Pop remaining operators
+    while stack:
+        res += stack.pop()
+
+    return res
+
+print(InfixToPostfix("a + b * (c^d - e) ^ (f + g * h) - i"))
+
+
+
+
+
