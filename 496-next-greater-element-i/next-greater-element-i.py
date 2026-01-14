@@ -14,7 +14,7 @@ class Solution:
                             found = True
                             break
                         j += 1
-                    break
+                    
 
             if not found:
                 res.append(-1)
