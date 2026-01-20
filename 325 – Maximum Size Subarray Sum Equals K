@@ -1,0 +1,14 @@
+def maxsize(nums,k):
+    hashmap = {0:-1}
+    prefix = 0
+    maxlen = 0
+
+    for i in range(len(nums)):
+        prefix+=nums[i]
+
+        if prefix-k in hashmap:
+            maxlen = max(maxlen,i-hashmap[prefix-k])
+        
+        if prefix not in hashmap:
+            hashmap[prefix] = i
+    return maxlen
