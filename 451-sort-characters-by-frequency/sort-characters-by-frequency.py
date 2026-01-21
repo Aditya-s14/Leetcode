@@ -2,15 +2,14 @@ class Solution:
     def frequencySort(self, s: str) -> str:
         hashmap = {}
         
-        for i in range(len(s)):
-            hashmap[s[i]] = hashmap.get(s[i],0)+1
+        for c in s:
+            hashmap[c] = hashmap.get(c,0)+1
         
-        hashmap_list = list(hashmap.items())
 
-        hashmap_list.sort(key = lambda x: x[1],reverse = True)
+        hm_sorted = sorted(hashmap.items(),key = lambda x: x[1],reverse = True)
         res = ""
-        for char,count in hashmap_list:
-            res+=char*count
+        for i in range(len(hm_sorted)):
+            res+=hm_sorted[i][0]*hm_sorted[i][1]
         
         return res
 
