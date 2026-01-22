@@ -3,8 +3,8 @@ class Solution:
 
         hm_ps = {}
         hm_sp = {}
-        s_list = s.split()
-        if len(pattern)!=len(s_list):
+        s_list = s.split()                 # dont forget to convert string to list
+        if len(pattern)!=len(s_list):       # very important
             return False
 
         for i in range(len(pattern)):
