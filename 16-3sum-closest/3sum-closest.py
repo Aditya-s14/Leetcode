@@ -3,7 +3,7 @@ class Solution:
         nums.sort()
         closest = nums[0] + nums[1] + nums[2]
 
-        for i in range(len(nums) - 2):
+        for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
 
