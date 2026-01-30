@@ -1,3 +1,4 @@
+method 1
 def count_set_bits(n:int)->int:
     binary = bin(n)[2:]
     binary_list = list(map(int,str(binary)))
@@ -12,3 +13,25 @@ def count_set_bits(n:int)->int:
 if __name__ == "__main__":
     n = 15
     print(count_set_bits(n))
+
+
+
+
+
+#method 2: Brian Kernighan’s Algorithm
+def countSetBits(n: int) -> int:
+    count = 0
+    while n:
+        n = n & (n - 1)
+        count += 1
+    return count
+
+
+
+Method 2: Right Shift + AND (Basic but safe)
+def countSetBits(n: int) -> int:
+    count = 0
+    while n:
+        count += n & 1
+        n >>= 1
+    return count
