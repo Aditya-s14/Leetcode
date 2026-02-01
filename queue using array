@@ -1,63 +1,63 @@
-class QueueArray:
-
-    def __init__(self, size=1000):
-        self.arrayQueue = [0] * size
-        self.start = 0
-        self.end = -1
-        self.capacity = size
+class Queue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = 0
+        self.rear = -1
         self.count = 0
 
-    # Check if queue is empty
-    def isEmpty(self):
-        return self.count == 0
-
-    # Add element to queue
-    def enqueue(self, x):
-        if self.count == self.capacity:
-            print('queue overflow')
+    # Enqueue (insert)
+    def enqueue(self, value):
+        if self.is_full():
+            print("Queue Overflow")
             return
-
-        self.end += 1
-        self.arrayQueue[self.end] = x
+        self.rear += 1
+        self.queue[self.rear] = value
         self.count += 1
 
-    # Remove element from queue
+    # Dequeue (remove)
     def dequeue(self):
-        if self.isEmpty():
-            print('queue underflow')
+        if self.is_empty():
+            print("Queue Underflow")
             return None
-
-        front_element = self.arrayQueue[self.start]
-        self.start += 1
+        value = self.queue[self.front]
+        self.front += 1
         self.count -= 1
-        return front_element
+        return value
 
-    # View front element
+    # Peek front element
     def peek(self):
-        if self.isEmpty():
-            print('queue is empty')
+        if self.is_empty():
+            print("Queue is Empty")
             return None
+        return self.queue[self.front]
 
-        return self.arrayQueue[self.start]
+    # Check if empty
+    def is_empty(self):
+        return self.count == 0
+
+    # Check if full
+    def is_full(self):
+        return self.count == self.size
+
+    # Display queue
+    def display(self):
+        if self.is_empty():
+            print("Queue is Empty")
+            return
+        print("Queue elements:")
+        for i in range(self.front, self.rear + 1):
+            print(self.queue[i])
 
 
-# Main execution (LeetCode-style driver)
-if __name__ == '__main__':
+q = Queue(5)
 
-    queue = QueueArray()
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
 
-    commands = ["ArrayQueue", "enqueue", "enqueue", "peek", "dequeue", "isEmpty"]
-    inputs = [[], [5], [10], [], [], []]
+print(q.peek())     # 10
+print(q.dequeue())  # 10
+print(q.peek())     # 20
 
-    for i in range(len(commands)):
-        if commands[i] == 'ArrayQueue':
-            print('null', end=' ')
-        elif commands[i] == 'enqueue':
-            queue.enqueue(inputs[i][0])
-            print('null', end=' ')
-        elif commands[i] == 'dequeue':
-            print(queue.dequeue(), end=' ')
-        elif commands[i] == 'peek':
-            print(queue.peek(), end=' ')
-        elif commands[i] == 'isEmpty':
-            print('true' if queue.isEmpty() else 'false', end=' ')
+q.display()
