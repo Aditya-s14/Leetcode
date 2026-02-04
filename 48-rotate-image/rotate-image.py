@@ -11,7 +11,7 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
         # Step 2: Reverse each row
-        for row in matrix:
-            row.reverse()
+        for i in range(n):  # i represents each row
+            matrix[i].reverse()
 
         
