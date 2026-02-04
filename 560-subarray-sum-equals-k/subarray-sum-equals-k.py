@@ -6,7 +6,7 @@ class Solution:
         for num in nums:
             prefix+=num
 
-            if prefix-k in hashmap:
+            if prefix-k in hashmap:   # prefix[j]-prefix[i] = k
                 count+=hashmap[prefix-k]
             
             hashmap[prefix] = hashmap.get(prefix,0)+1
