@@ -12,5 +12,5 @@ class Solution:
             else:
                 high = mid
 
-        return nums[low]
+        return nums[low] # if we return low we are basically returning no of rotations
         
