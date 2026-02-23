@@ -9,7 +9,7 @@ class Solution:
             if nums[mid] == target:
                 return True
 
-            if nums[low] == nums[mid] == nums[high]:
+            if nums[low] == nums[mid] == nums[high]:  #handling duplicates
                 low+=1
                 high-=1
 
