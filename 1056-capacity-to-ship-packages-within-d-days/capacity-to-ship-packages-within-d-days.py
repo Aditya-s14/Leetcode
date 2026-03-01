@@ -23,3 +23,15 @@ class Solution:
                 high = mid - 1
         
         return low
+
+
+        #greedy pattern
+    """groups = 1
+        curr_sum = 0
+
+        for element in array:
+            if curr_sum+element<=limit:
+                curr_sum+=element
+            else:
+                groups+=1
+                curr_sum = element"""
