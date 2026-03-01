@@ -14,3 +14,11 @@ class Solution:
                 high = mid - 1
 
         return k + high + 1
+
+
+"""we need to return arr[high]+remaining ------>1
+    remaining = k-missing ----> 2
+    missing = arr[mid] - (mid + 1) ----->3
+    subst 2 with 1
+    and put the ans in 1"""
+
