@@ -13,7 +13,7 @@ class Solution:
                     count+=1
                 max_count = max(max_count,count)
 
-        return max_count if max_count else 1
+        return max_count 
         
         
         
